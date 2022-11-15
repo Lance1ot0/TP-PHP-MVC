@@ -1,0 +1,15 @@
+{
+    "name": "rocca/app",
+    "autoload": {
+        "psr-4": {
+            "App\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Louis R.",
+            "email": "95973810+LouisSleep@users.noreply.github.com"
+        }
+    ],
+    "require": {}
+}

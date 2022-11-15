@@ -1,4 +1,2 @@
 <?php 
-echo 'Test';
-
-?>
+require('autoload.php');
