@@ -2,7 +2,7 @@
     "name": "rocca/app",
     "autoload": {
         "psr-4": {
-            "Rocca\\App\\": "src/"
+            "App\\": "src/"
         }
     },
     "authors": [
