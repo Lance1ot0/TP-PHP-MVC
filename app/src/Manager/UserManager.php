@@ -1,7 +1,9 @@
 <?php
 namespace App\Manager;
 
-class UserManager
+use App\Entity\User;
+
+class UserManager extends BaseManager
 {
     public function getAllUsers(): array
     {

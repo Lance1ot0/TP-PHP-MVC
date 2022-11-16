@@ -4,20 +4,20 @@ CREATE TABLE IF NOT EXISTS user
     username  VARCHAR(255) NOT NULL,
     password  VARCHAR(255) NOT NULL,
     email     VARCHAR(255) NOT NULL,
-    first_name VARCHAR(255),
-    last_name  VARCHAR(255),
-    is_admin  BOOLEAN NOT NULL
+    firstName VARCHAR(255),
+    lastName  VARCHAR(255),
+    isAdmin  BOOLEAN NOT NULL
 );
 
 CREATE TABLE IF NOT EXISTS post
 (
     id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
-    user_id INT,
+    userId INT,
     content VARCHAR(255) NOT NULL,
     author  VARCHAR(255) NOT NULL,
-    created_at DATETIME,
+    createdAt DATETIME,
     image VARCHAR(255),
-    FOREIGN KEY (user_id) REFERENCES user(id) ON DELETE CASCADE
+    FOREIGN KEY (userId) REFERENCES user(id) ON DELETE CASCADE
 );
 
 CREATE TABLE IF NOT EXISTS comment
@@ -25,12 +25,12 @@ CREATE TABLE IF NOT EXISTS comment
     id      INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
     content TEXT,
     author  VARCHAR(255),
-    created_at DATETIME NOT NULL,
-    user_id INT,
-    post_id INT,
-    support_id INT,
-    FOREIGN KEY (post_id) REFERENCES post(id) ON DELETE CASCADE,
-    FOREIGN KEY (user_id) REFERENCES user(id) ON DELETE CASCADE 
+    createdAt DATETIME NOT NULL,
+    userId INT,
+    postId INT,
+    supportId INT,
+    FOREIGN KEY (postId) REFERENCES post(id) ON DELETE CASCADE,
+    FOREIGN KEY (userId) REFERENCES user(id) ON DELETE CASCADE 
 );
 
 INSERT INTO user 
@@ -38,9 +38,9 @@ INSERT INTO user
     username, 
     password, 
     email, 
-    first_name, 
-    last_name, 
-    is_admin
+    firstName, 
+    lastName, 
+    isAdmin
 ) 
     VALUES 
     (
@@ -54,7 +54,7 @@ INSERT INTO user
 
 INSERT INTO post 
 (
-    user_id, 
+    userId, 
     content, 
     author
 ) 
@@ -67,7 +67,7 @@ INSERT INTO post
 
 INSERT INTO post 
 (
-    user_id, 
+    userId, 
     content, 
     author
 ) 

@@ -5,7 +5,7 @@ namespace App\Entity;
 use App\Interfaces\PasswordProtectedInterface;
 use App\Interfaces\UserInterface;
 
-class User extends BaseEntity implements UserInterface, PasswordProtectedInterface
+class User extends BaseEntity
 {
     private ?int $id;
     private string $username;
