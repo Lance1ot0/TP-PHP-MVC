@@ -2,10 +2,7 @@
 
 namespace App\Interfaces;
 
-class Interfaces
+interface Database
 {
-    public function __construct()
-    {
-        echo "Interfaces";
-    }
+        public function getMySqlPDO(): \PDO;
 }

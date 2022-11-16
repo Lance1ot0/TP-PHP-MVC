@@ -1,11 +1,15 @@
-<?
+<?php
 
 namespace App\Manager;
 
-class BaseManager
+use App\Interfaces\Database;
+
+abstract class BaseManager
 {
-    public function __construct()
+    protected \PDO $pdo;
+
+    public function __construct(Database $database)
     {
-        echo "BaseManager";
+        $this->pdo = $database->getMySqlPDO();
     }
 }

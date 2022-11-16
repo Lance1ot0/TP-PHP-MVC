@@ -1,13 +1,28 @@
-<?
+<?php
 
 namespace App\Factory;
 
-class PDOFactory
+use App\Interfaces\Database;
+
+class PDOFactory implements Database
 {
-    public static function getMysqlConnexion()
+    private string $host;
+    private string $dbName;
+    private string $userName;
+    private string $password;
+
+    public function __construct(string $host = "db", string $dbName = "data", string $userName = "root", string $password = "password")
     {
-        $db = new \PDO('mysql:host=localhost;dbname=tp_php_mvc', 'root', '');
-        $db->setAttribute(\PDO::ATTR_ERRMODE, \PDO::ERRMODE_EXCEPTION);
-        return $db;
+        $this->host = $host;
+        $this->dbName = $dbName;
+        $this->userName = $userName;
+        $this->password = $password;
     }
+
+    public function getMySqlPDO(): \PDO
+    {
+        return new \PDO("mysql:host=" . $this->host . ";dbname=" . $this->dbName, $this->userName, $this->password);
+    }
+
 }
+

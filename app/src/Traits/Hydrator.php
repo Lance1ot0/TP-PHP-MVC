@@ -1,14 +1,14 @@
-<?
+<?php
 
 namespace App\Traits;
 
-trait Hydratation
+trait Hydrator
 {
-    public function hydrate($data)
+    public function hydrate(array $data): void
     {
         foreach ($data as $key => $value) {
             $method = 'set' . ucfirst($key);
-            if (method_exists($this, $method)) {
+            if (is_callable([$this, $method])) {
                 $this->$method($value);
             }
         }

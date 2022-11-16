@@ -15,8 +15,8 @@ CREATE TABLE IF NOT EXISTS post
     user_id INT,
     content VARCHAR(255) NOT NULL,
     author  VARCHAR(255) NOT NULL,
-    created_at DATETIME NOT NULL,
-    image BLOB,
+    created_at DATETIME,
+    image VARCHAR(255),
     FOREIGN KEY (user_id) REFERENCES user(id) ON DELETE CASCADE
 );
 
@@ -31,4 +31,49 @@ CREATE TABLE IF NOT EXISTS comment
     support_id INT,
     FOREIGN KEY (post_id) REFERENCES post(id) ON DELETE CASCADE,
     FOREIGN KEY (user_id) REFERENCES user(id) ON DELETE CASCADE 
+);
+
+INSERT INTO user 
+(
+    username, 
+    password, 
+    email, 
+    first_name, 
+    last_name, 
+    is_admin
+) 
+    VALUES 
+    (
+        'USER 1', 
+        '1234', 
+        'user1@1.1', 
+        'test', 
+        'Test en majuscule', 
+        0
+);
+
+INSERT INTO post 
+(
+    user_id, 
+    content, 
+    author
+) 
+    VALUES 
+    (
+        1, 
+        'je suis le post1', 
+        'USER 1' 
+);
+
+INSERT INTO post 
+(
+    user_id, 
+    content, 
+    author
+) 
+    VALUES 
+    (
+        1, 
+        'je suis le post2', 
+        'USER 1' 
 );
