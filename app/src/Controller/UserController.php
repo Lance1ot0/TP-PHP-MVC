@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Factory\PDOFactory;
 use App\Manager\UserManager;
 use App\Route\Route;
+use App\Entity\User;
 
 class UserController extends AbstractController
 {
@@ -20,9 +21,13 @@ class UserController extends AbstractController
     #[Route('/signUp', 'signUp', ['GET', 'POST'])]
     public function signUp()
     {
-        $userManager = new UserManager(new PDOFactory());
-        $users = $userManager->getAllUsers();
+        if ($_POST) {
 
-        $this->render("signUp.php", ["users" => $users], "Sign Up");
+            $userManager = new UserManager(new PDOFactory());
+            $user = new User($_POST);
+            $userManager->insertUser($user);
+        } 
+
+        $this->render("signUp.php", [], "Sign Up");
     }
 }

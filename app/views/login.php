@@ -1,12 +1,21 @@
 
-    <h1>TOUS LES USERS</h1>
+<a href="/">Home</a>
 
-<?php
+    <form action="" style="border:1px solid #ccc">
+        <div class="container">
+            <h1>Login</h1>
 
-/** @var App\Entity\User[] $users */
-foreach ($users as $user) {
-    
-    echo $user->getEmail(), $user->getFirstName();
-}
+            <label for="email"><b>Email</b></label>
+            <input type="text" placeholder="Enter Email" name="email" required>
 
+            <label for="psw"><b>Password</b></label>
+            <input type="password" placeholder="Enter Password" name="psw" required>
 
+            </label>
+
+            <div class="clearfix">
+            <button type="button" class="cancelbtn">Cancel</button>
+            <button type="submit" class="signupbtn">Sign Up</button>
+            </div>
+        </div>
+    </form>

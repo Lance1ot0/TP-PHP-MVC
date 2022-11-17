@@ -123,13 +123,21 @@ class User extends BaseEntity
         return $this;
     }
 
-    public function getHashedPassword(): string
-    {
-        // TODO: Implement getHashedPassword() method.
-    }
+    // /**
+    // * @return string
+    // */
+    // public function getPassword(): string
+    // {
+    //     return $this->password;
+    // }
 
-    public function passwordMatch(): bool
-    {
-        // TODO: Implement passwordMatch() method.
-    }
+    // /**
+    // * @param string $password
+    // * @return string
+    // */
+    // public function setPassword(): string
+    // {
+    //     $this->password = $password;
+    //     return $this;
+    // }
 }
