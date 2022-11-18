@@ -3,6 +3,7 @@
 
     <a href="signUp">Sign Up</a>
     <br>
+    
     <a href="login">Login</a>
     <br><br><br>
 
@@ -12,4 +13,6 @@ foreach ($posts as $post) {
     
     echo $post->getContent(), $post->getAuthor(). "<br>";
 }
+
+var_dump($_SESSION);
 
