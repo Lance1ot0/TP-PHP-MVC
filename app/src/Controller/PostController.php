@@ -21,8 +21,6 @@ class PostController extends AbstractController
         $userManager = new UserManager(new PDOFactory());
         $users = $userManager->getAllUsers();
 
-        
-
         $this->render("home.php", ["posts" => $posts, "users" => $users], "Tous les posts");
     }
 }

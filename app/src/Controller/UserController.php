@@ -4,6 +4,8 @@ namespace App\Controller;
 
 use App\Factory\PDOFactory;
 use App\Manager\UserManager;
+use App\Manager\PostManager;
+use App\Controller\PostController;
 use App\Route\Route;
 use App\Entity\User;
 
@@ -12,8 +14,6 @@ class UserController extends AbstractController
     #[Route('/login', 'login', ['GET', 'POST'])]
     public function login()
     {
-  
-
 
         $userManager = new UserManager(new PDOFactory());
         $users = $userManager->getAllUsers();
@@ -24,14 +24,25 @@ class UserController extends AbstractController
             if (isset($user)){
 
                 $_SESSION['user'] = $user;
-                $this->render("home.php", [], "Tous les posts");
+                $postManager = new PostManager(new PDOFactory());
+                $posts = $postManager->getAllPosts();
+
+                $userManager = new UserManager(new PDOFactory());
+                $users = $userManager->getAllUsers();
+                $this->render("home.php", ["posts" => $posts, "users" => $users], "Tous les posts");
             }
          
         }
 
-
         $this->render("login.php", ["users" => $users], "Tous les users");
     
+    }
+
+    #[Route('/logout', 'logout', [])]
+    public function logout()
+    {
+        session_destroy();
+        return RedirectToAction("index", "main");
     }
 
     #[Route('/signUp', 'signUp', ['GET', 'POST'])]
