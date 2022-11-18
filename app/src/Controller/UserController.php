@@ -21,12 +21,16 @@ class UserController extends AbstractController
     #[Route('/signUp', 'signUp', ['GET', 'POST'])]
     public function signUp()
     {
+        $userManager = new UserManager(new PDOFactory());
         if ($_POST) {
 
-            $userManager = new UserManager(new PDOFactory());
             $user = new User($_POST);
             $userManager->insertUser($user);
         } 
+        elseif ($_GET) {
+            
+            echo 'GET';
+        }
 
         $this->render("signUp.php", [], "Sign Up");
     }

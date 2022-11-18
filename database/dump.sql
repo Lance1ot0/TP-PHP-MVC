@@ -6,7 +6,7 @@ CREATE TABLE IF NOT EXISTS user
     email     VARCHAR(255) NOT NULL,
     firstName VARCHAR(255),
     lastName  VARCHAR(255),
-    isAdmin  BOOLEAN NOT NULL
+    isAdmin  BOOLEAN
 );
 
 CREATE TABLE IF NOT EXISTS post

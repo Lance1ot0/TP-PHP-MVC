@@ -21,6 +21,10 @@
             <label for="password"><b>Password</b></label>
             <input type="password" placeholder="Enter Password" name="password" required>
 
+            <label for="adminStatus">Admin?</label>
+            <input type="checkbox" name="adminStatus">
+
+
             </label>
 
             <div class="clearfix">
