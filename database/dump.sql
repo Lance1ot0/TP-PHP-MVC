@@ -51,29 +51,3 @@ INSERT INTO user
         'Test en majuscule', 
         0
 );
-
-INSERT INTO post 
-(
-    userId, 
-    content, 
-    author
-) 
-    VALUES 
-    (
-        1, 
-        'je suis le post1', 
-        'USER 1' 
-);
-
-INSERT INTO post 
-(
-    userId, 
-    content, 
-    author
-) 
-    VALUES 
-    (
-        1, 
-        'je suis le post2', 
-        'USER 1' 
-);

@@ -8,7 +8,7 @@ class Post extends BaseEntity
     private ?string $content;
     private ?string $author;
     private ?int $userId;
-    private Date $date;
+    private string $createdAt;
     private ?string $image = null; 
 
     /**
@@ -74,11 +74,22 @@ class Post extends BaseEntity
     }
 
     /**
-     * @return Date
+     * @return string
      */
-    public function getDate(): Date
+    public function getCreatedAt(): string
     {
-        return $this->date;
+        return $this->createdAt;
+    }
+
+
+     /**
+     * @param string $createdAt
+     * @return Post
+     */
+    public function setCreatedAt(?string $createdAt): Post
+    {
+        $this->createdAt = $createdAt;
+        return $this;
     }
 
         /**

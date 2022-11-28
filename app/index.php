@@ -2,8 +2,6 @@
 
 session_start();
 
-var_dump($_SESSION);
-
 use App\Route\Route;
 
 require_once 'vendor/autoload.php';

@@ -7,7 +7,7 @@ use App\Interfaces\UserInterface;
 
 class User extends BaseEntity
 {
-    // private int $id;
+    private int $id;
     private string $username;
     private string $password;
     private string $email;
@@ -16,23 +16,23 @@ class User extends BaseEntity
     private ?string $adminStatus;
     private int $isAdmin = 0;
 
-    // /**
-    //  * @return int
-    //  */
-    // public function getId(): int
-    // {
-    //     return $this->id;
-    // }
+    /**
+     * @return int
+     */
+    public function getId(): int
+    {
+        return $this->id;
+    }
 
-    // /**
-    //  * @param int $id
-    //  * @return User
-    //  */
-    // public function setId(int $id): User
-    // {
-    //     $this->id = $id;
-    //     return $this;
-    // }
+    /**
+     * @param int $id
+     * @return User
+     */
+    public function setId(int $id): User
+    {
+        $this->id = $id;
+        return $this;
+    }
 
     /**
      * @return string

@@ -20,10 +20,14 @@ class UserController extends AbstractController
         
         if ($_GET) {
 
-            $user = $userManager->getByUsername($_GET['username']);
+            $user = $userManager->getByUsername($_GET['username'], $_GET['password']);
+
             if (isset($user)){
 
                 $_SESSION['user'] = $user;
+                $_SESSION['id'] = $user->getId();
+                $_SESSION['username'] = $user->getUsername();
+                $_SESSION['admin'] = $user->getIsAdmin();
                 $postManager = new PostManager(new PDOFactory());
                 $posts = $postManager->getAllPosts();
 
@@ -42,7 +46,11 @@ class UserController extends AbstractController
     public function logout()
     {
         session_destroy();
-        return RedirectToAction("index", "main");
+        
+        $postManager = new PostManager(new PDOFactory());
+        $posts = $postManager->getAllPosts();
+
+        $this->render("home.php", ["posts" => $posts], "Home");
     }
 
     #[Route('/signUp', 'signUp', ['GET', 'POST'])]
@@ -51,8 +59,22 @@ class UserController extends AbstractController
         $userManager = new UserManager(new PDOFactory());
         if ($_POST) {
             
+           
             $user = new User($_POST);
+            $_SESSION['user'] = $user;
+            $_SESSION['id'] = $user->getId();
+            $_SESSION['username'] = $user->getUsername();
+            $_SESSION['admin'] = $user->getIsAdmin();
             $userManager->insertUser($user);
+
+            
+            $postManager = new PostManager(new PDOFactory());
+            $posts = $postManager->getAllPosts();
+
+            $userManager = new UserManager(new PDOFactory());
+            $users = $userManager->getAllUsers();
+
+            $this->render("home.php", ["posts" => $posts, "users" => $users], "Tous les posts");
         } 
         elseif ($_GET) {
             
